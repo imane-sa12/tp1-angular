@@ -1,0 +1,67 @@
+<mat-card class="form-card">
+  <h2>Inscription - Template Driven</h2>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <!-- Nom complet -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nom Complet</mat-label>
+      <input matInput name="fullname" [(ngModel)]="model.fullname"
+             #fullname="ngModel" required minlength="3" />
+      @if (fullname.hasError('required')) {
+        <mat-error>Le nom est obligatoire</mat-error>
+      } @else if (fullname.hasError('minlength')) {
+        <mat-error>Minimum 3 caractères</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Âge -->
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" name="age" [(ngModel)]="model.age"
+             #age="ngModel" required min="18" />
+      @if (age.hasError('required')) {
+        <mat-error>L'âge est obligatoire</mat-error>
+      } @else if (age.hasError('min')) {
+        <mat-error>Vous devez avoir au moins 18 ans</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Pays -->
+    <mat-form-field appearance="outline">
+      <mat-label>Pays</mat-label>
+      <mat-select name="country" [(ngModel)]="model.country"
+                  #country="ngModel" required>
+        @for (p of pays; track p) {
+          <mat-option [value]="p">{{ p }}</mat-option>
+        }
+      </mat-select>
+      @if (country.hasError('required')) {
+        <mat-error>Veuillez choisir un pays</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" name="email" [(ngModel)]="model.email"
+             #email="ngModel" required email />
+      @if (email.hasError('required')) {
+        <mat-error>L'email est obligatoire</mat-error>
+      } @else if (email.hasError('email')) {
+        <mat-error>Format d'email invalide</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-flat-button type="submit" [disabled]="f.invalid">
+        S'inscrire
+      </button>
+    </div>
+  </form>
+
+  @if (resultat) {
+    <div class="success">Inscription réussie !</div>
+    <pre class="success">{{ resultat | json }}</pre>
+  }
+</mat-card>

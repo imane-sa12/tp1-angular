@@ -1,0 +1,46 @@
+<main class="forms">
+  <app-template-driven />
+  <app-reactive-form />
+</main>
+
+<div class="bouton-question">
+  <button mat-flat-button (click)="toggle()">
+    {{ afficher() ? 'Masquer la question de réflexion' : 'Afficher la question de réflexion' }}
+  </button>
+</div>
+
+@if (afficher()) {
+  <section class="reponse">
+    <h2>Question de réflexion</h2>
+
+    <div class="colonnes">
+      <div class="bloc">
+        <h3>Template-Driven</h3>
+        <p>
+          La logique du formulaire est écrite dans le fichier HTML avec
+          <code>ngModel</code> et des attributs comme <code>required</code> ou
+          <code>minlength</code>. Angular crée le modèle automatiquement. C'est rapide
+          et facile à écrire, mais la validation reste dans le template et elle est
+          plus difficile à tester.
+        </p>
+      </div>
+
+      <div class="bloc">
+        <h3>Reactive Forms</h3>
+        <p>
+          Le formulaire est défini dans le fichier TypeScript avec
+          <code>FormGroup</code>, <code>FormControl</code> et <code>Validators</code>.
+          Il y a un peu plus de code, mais on contrôle mieux les données et les
+          validations, et on peut tester sans passer par le template.
+        </p>
+      </div>
+    </div>
+
+    <p class="choix">
+      <strong>Mon choix :</strong> je préfère le Template-Driven pour un petit
+      formulaire simple comme celui de ce TP, et les Reactive Forms pour un
+      formulaire plus grand ou dynamique (champs ajoutés, validations croisées,
+      appels au serveur).
+    </p>
+  </section>
+}

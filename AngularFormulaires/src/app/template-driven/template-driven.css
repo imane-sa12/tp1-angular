@@ -1,0 +1,92 @@
+.form-card {
+  padding: 32px 28px 28px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* Titre avec barre d'accent */
+h2 {
+  margin: 0 0 24px;
+  padding-bottom: 12px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #6d1e8a;
+  border-bottom: 3px solid #d13bf6;
+  display: inline-block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* Bouton */
+.actions {
+  margin-top: 12px;
+}
+
+.actions button {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.actions button:not([disabled]):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(178, 59, 246, 0.35);
+}
+
+/* Récapitulatif */
+.success {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #ecfdf5;
+  color: #065f46;
+  border-left: 5px solid #10b981;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.9rem;
+  animation: apparition 0.35s ease;
+}
+
+pre.success {
+  white-space: pre-wrap;
+  background: #f0fdf4;
+}
+
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.actions button {
+  --mat-button-filled-container-color: #9410b9;
+  --mat-button-filled-label-text-color: #ffffff;
+  --mat-button-filled-hover-container-color: #7e0596;
+  --mat-button-filled-disabled-container-color: #d1d5db;
+  --mat-button-filled-disabled-label-text-color: #9ca3af;
+
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.actions button:not([disabled]):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(16, 185, 129, 0.35);
+}
